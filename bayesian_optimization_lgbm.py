@@ -1,5 +1,6 @@
 from bayes_opt import BayesianOptimization
 from scipy.ndimage.measurements import mean
+import lightgbm as lgb
 
 # Hyperparameter Tuning - Bayesian Optimization
 def bayes_parameter_opt_lgb(X, y, init_round=15, opt_round=25, n_folds=3, random_seed=1945,n_estimators=1000, param_bounds=param_bounds, output_process=False):
