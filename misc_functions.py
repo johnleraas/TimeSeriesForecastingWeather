@@ -62,27 +62,19 @@ def train_test_split_ts(df, date_val):
   df.set_index('Date', inplace=True)
 
   print("X_train Shape: {}".format(X_train.shape))
+  print("X_test Shape: {}".format(X_test.shape))
 
   return X_train, y_train, X_test, y_test
 
-def train_val_split_ts(df, val_size):
+def train_val_split_ts(X_train, y_train, val_size):
   # Get Index
   date_index=int(X_train.shape[0]*(1-val_size))
 
-  # Reset Index
-  df.reset_index(inplace=True)
-
-  # Assign X and y
-  y = df['y_val']
-  X = df.loc[:, df.columns != 'y_val']
-  X = X.drop(columns=['Date'])
-
   # Train / Test Split
-  y_train, y_val= np.split(y, [date_index])
-  X_train, X_val= np.split(X, [date_index])
-
-  df.set_index('Date', inplace=True)
+  y_train, y_val= np.split(y_train, [date_index])
+  X_train, X_val= np.split(X_train, [date_index])
 
   print("X_train Shape: {}".format(X_train.shape))
+  print("X_val Shape: {}".format(X_val.shape))
 
   return X_train, y_train, X_val, y_val
