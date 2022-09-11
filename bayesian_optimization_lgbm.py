@@ -2,7 +2,7 @@ import pandas as pd
 import lightgbm as lgb
 from bayes_opt import BayesianOptimization
 from scipy.ndimage.measurements import mean
- 
+
 # Hyperparameter Tuning - Bayesian Optimization
 def bayes_parameter_opt_lgb(X, y, param_bounds, tss, init_round=15, opt_round=25, n_folds=3, random_seed=1945,n_estimators=1000, output_process=False):
   # Prepare Data
@@ -52,3 +52,22 @@ def bayes_parameter_opt_lgb(X, y, param_bounds, tss, init_round=15, opt_round=25
 
   # Return Optimal Parameter Set
   return optimizer.res[pd.Series(model_results).idxmax()]['target'], optimizer.res[pd.Series(model_results).idxmax()]['params']
+
+ 
+# Given set of parameters from BO, returns appropriate types and values
+def get_clean_params(params):
+    params['objective'] = 'regression'
+    params['metric'] = 'rmse'
+    params['num_iterations']: 500
+    params['categorical_feature'] = 'auto'
+    params['learning_rate'] = max(min(params['learning_rate'], 1), 0)
+    params["num_leaves"] = int(round(params["num_leaves"]))
+    params['feature_fraction'] = max(min(params['feature_fraction'], 1), 0)
+    params['bagging_fraction'] = max(min(params['bagging_fraction'], 1), 0)
+    params['max_depth'] = int(round( params['max_depth']))
+    params['max_bin'] = int(round(params['max_bin']))
+    params['min_data_in_leaf'] = int(round(params['min_data_in_leaf']))
+    params['min_sum_hessian_in_leaf'] = params['min_sum_hessian_in_leaf']
+    params['subsample'] = max(min(params['subsample'], 1), 0)
+
+    return params
