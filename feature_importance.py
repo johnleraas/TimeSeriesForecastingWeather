@@ -1,4 +1,5 @@
 import pandas as pd
+import matplotlib.pyplot as plt
 
 #  For LGBM model, get feature importance
 def get_feature_importance(model):
