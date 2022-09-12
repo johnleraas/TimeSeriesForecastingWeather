@@ -78,7 +78,7 @@ def plot_importance_b (df, num, title, feat_col="Feature", count_col="Value_pct"
   plt.show()
   
 # Plot Predictions
-def plot_predictions(model, df, X_test, y_test, date_start, date_end, date_interval=5, title="Predicted vs. Actual Values):
+def plot_predictions(model, df, X_test, y_test, date_start, date_end, date_interval=5, title="Predicted vs. Actual Values"):
 
   results = pd.DataFrame({'Date': pd.to_datetime(df.index[date_start:date_end]),
                         'Actual': y_test.reset_index(drop=True),
