@@ -52,7 +52,7 @@ def plot_trainValTest_split(df, y_train, y_val, y_test):
   plt.show()
   
 # Plot Kfold split
-def plot_kfold_split(df, y_train, n_folds):
+def plot_kfold_split(df, y_train, n_folds, tss):
   df = pd.DataFrame({'Date': pd.to_datetime(df.index[0:y_train.shape[0]]),
                       'y_val': y_train}).set_index('Date')
 
