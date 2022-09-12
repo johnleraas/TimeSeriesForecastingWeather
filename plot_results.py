@@ -66,8 +66,8 @@ def plot_kfold_split(df, y_train, n_folds):
   plt.show()
 
 
-  # Plot Importance
-  def plot_importance_b (df, num, title, feat_col="Feature", count_col="Value_pct", fig_size = (15,10)):
+# Plot Importance
+def plot_importance_b (df, num, title, feat_col="Feature", count_col="Value_pct", fig_size = (15,10)):
   df_plt = df.sort_values(by=count_col, ascending=True)
   plt.figure(figsize=fig_size)
   plt.barh(df_plt[feat_col][df.shape[0]-num:df.shape[0]], df_plt[count_col][df.shape[0]-num:df.shape[0]])
@@ -75,6 +75,7 @@ def plot_kfold_split(df, y_train, n_folds):
   plt.xlabel('Importance', fontsize=20)
   plt.yticks(weight='bold')
   plt.title('Feature Importance', fontsize=26)
+  plt.show()
   
 # Plot Predictions
 def plot_predictions(model, df, X_test, y_test, date_start, date_end, date_interval=5, title="Predicted vs. Actual Values):
