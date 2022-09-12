@@ -72,7 +72,7 @@ def plot_kfold_split(df, y_train, n_folds):
 
 
 # Plot Importance
-def plot_importance_b (df, num, title, feat_col="Feature", count_col="Value_pct", fig_size = (15,10)):
+def plot_importance (df, num, title, feat_col="Feature", count_col="Value_pct", fig_size = (15,10)):
   df_plt = df.sort_values(by=count_col, ascending=True)
   plt.figure(figsize=fig_size)
   plt.barh(df_plt[feat_col][df.shape[0]-num:df.shape[0]], df_plt[count_col][df.shape[0]-num:df.shape[0]])
