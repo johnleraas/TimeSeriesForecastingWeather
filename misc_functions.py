@@ -9,16 +9,9 @@ import numpy as np
 from sklearn.model_selection import TimeSeriesSplit
 import lightgbm as lgb
 
-
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-
-def add_two(x):
-    return x+2
-
-def divide_three(x):
-    return x/3
 
 # Ensure proper format
 def ensure_categorical(df, col_list):
